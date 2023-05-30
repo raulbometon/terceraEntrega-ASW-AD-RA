@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
+import './styles/issuesEdit.css'
 
 const IssueEdit = () => {
   const [issue, setIssue] = useState(null);
@@ -31,11 +31,34 @@ const IssueEdit = () => {
 
   return (
     <div>
-      <h1>Editar issue</h1>
-      <h2>{issue.subject}</h2>
-      <p>{issue.description}</p>
-      {/* Agrega aquí los campos y lógica de edición */}
+      {/*MAIN*/}
+      <div class="main-detail">
+        {/*HEADER*/}
+        <div class="detail-header">
+          <div class="detail-title-wrapper">
+            <h2>
+              <div class="detail-ref">#{issue.id} </div>
+              <div class="detail-subject">{issue.subject}</div>
+            </h2>
+          </div>
+          <div class="detail-project">
+            <div class="section-name">Issue</div>
+          </div>
+
+        {/*SUBHEADER*/}
+          <div>
+          Created by
+          </div>
+        </div>
+        <div>Separacion</div>
+        {/*DESCRIPTION*/}
+
+
+
+        {/*Activities + Comments*/}
+
     </div>
+  </div>
   );
 };
 

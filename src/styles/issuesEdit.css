@@ -1,0 +1,45 @@
+.main-detail{
+  padding: 1rem;
+}
+.detail-title-wrapper {
+  display: flex;
+  margin: 0 2rem 0.5rem 0;
+  transition: all .2s linear;
+}
+
+.detail-ref {
+  display: inline;
+  font-size: 1.7rem;
+  color: #008aa8;
+  margin-right: 0.5rem;
+}
+.detail-subject {
+  display: inline;
+  color: #2e3440;
+  flex-grow: 1;
+  word-break: break-word;
+}
+
+.detail .detail-header-container {
+  display: flex;
+  margin: 0 0 0.5rem;
+  position: relative;
+}
+.detail-header .detail-project .section-name {
+  color: #4c566a;
+  text-transform: uppercase;
+}
+
+.detail-project {
+    font-family: Ubuntu-Regular,Arial,Helvetica,sans-serif;
+    color: #2e3440;
+    display: flex;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+}
+
+.detail-header .detail-project .section-name {
+    color: #4c566a;
+    text-transform: uppercase;
+}
+
