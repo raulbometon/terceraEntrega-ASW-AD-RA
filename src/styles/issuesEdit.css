@@ -1,3 +1,12 @@
+.two-sections {
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity .3s ease;
+  display: flex;
+}
+/*MAIN*/
 .main-detail{
   padding: 1rem;
 }
@@ -42,4 +51,9 @@
     color: #4c566a;
     text-transform: uppercase;
 }
+/*DESCRIPTION*/
 
+.description-placeholder{
+  opacity: 0.7;
+  cursor:pointer;
+}
