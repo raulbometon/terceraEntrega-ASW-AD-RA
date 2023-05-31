@@ -23,7 +23,7 @@ const IssuesList = () => {
           console.error(error);
         }
       };
-  
+
       fetchData();
     }, []);
 

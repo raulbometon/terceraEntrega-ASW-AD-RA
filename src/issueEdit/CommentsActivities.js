@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './styles/comments.css'
 import './styles/activities.css'
+import IssueActivities from './IssueActivities.js'
 
-const CommentsActivities = () => {
+const CommentsActivities = ({issueId}) => {
   const [showComments, setShowComments] = useState(true);
   const [showActivities, setShowActivities] = useState(false);
 
@@ -42,7 +43,7 @@ const CommentsActivities = () => {
       </div>
 
       <div id="activities" className="activity-container" style={{ display: showActivities ? 'block' : 'none' }}>
-        ACTIVITIES GET
+        <IssueActivities issueId = {issueId}/>
       </div>
     </div>
   );

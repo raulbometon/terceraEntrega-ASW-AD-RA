@@ -82,14 +82,14 @@ const IssueEdit = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://apiadra4.fly.dev/issues/${issueId}`, {
+        const response = await axios.get(`https://apiadra4.fly.dev/issues/${issueId}/activities`, {
           headers: {
             Accept: "application/json",
             Authorization: "3b77389e887d6a4689ecdcb2f009ab5d",
           },
         });
         setIssue(response.data);
-        console.log(response.data);
+        //console.log(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -158,7 +158,7 @@ return (
         )}
       </div>
         {/*Activities + Comments*/}
-        <CommentsActivities />
+        <CommentsActivities issueId = {issueId}/>
       </div>
     {/*WRAPPER*/}
     <div className="wrapper">
