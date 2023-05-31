@@ -35,6 +35,7 @@ const NewIssue = () => {
         console.log("Issue creada correctamente");
       } else {
         console.error("Error al crear la issue");
+        alert("Error al crear la issue.");
       }
     } catch (error) {
       console.error("Error de red", error);
