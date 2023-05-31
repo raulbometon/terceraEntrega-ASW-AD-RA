@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import './styles/issuesEdit.css'
 import './styles/issuesEditWrapper.css'
+import CommentsActivities from './issueEdit/CommentsActivities'
+
 // Custom Components
 const DueDateIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6" style={{ width: 12, height: 12 }}>
@@ -71,10 +73,12 @@ function getIssuePriorityColor(priority) {
 const IssueEdit = () => {
   const [issue, setIssue] = useState(null);
   const { issueId } = useParams();
-    {/*CONFIGURACION DESCRIPTION*/}
+
+  {/*CONFIGURACION DESCRIPTION*/}
   const [desc, setDesc] = useState('');
   const [desc_active, setActivado] = useState('');
   const [desc_send, setDescSend] = useState('');
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -85,7 +89,7 @@ const IssueEdit = () => {
           },
         });
         setIssue(response.data);
-        //console.log(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -153,10 +157,9 @@ return (
           </div>
         )}
       </div>
-
         {/*Activities + Comments*/}
-
-    </div>
+        <CommentsActivities />
+      </div>
     {/*WRAPPER*/}
     <div className="wrapper">
       <sidebar className="sidebar ticket-data">
