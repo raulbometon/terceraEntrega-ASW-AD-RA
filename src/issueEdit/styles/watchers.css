@@ -17,13 +17,15 @@
   margin-left: 10px; /* Adjust the margin as needed */
 }
 
-.delete-button {
+.delete-button,
+.add-button{
   background-color: transparent;
-  width: 20px; /* Increase the width to make the delete button bigger */
+  width: 25px; /* Increase the width to make the delete button bigger */
 }
 
-.delete-button:hover{
-  width:22px;
+.delete-button:hover,
+.add-button:hover{
+  width:30px;
 }
 
 /*POST watcher*/
@@ -45,5 +47,14 @@
   border-radius: 5px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
-
-/* Additional styles for centering the pop-up form */
+.add-watchers-container{
+  display: flex;
+  align-items:center;
+}
+.add-watchers-button{
+  padding: 0.6em;
+  margin: auto;
+}
+.add-watchers-button:hover{
+  padding: 0.75em;
+}
