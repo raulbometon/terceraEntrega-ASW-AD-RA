@@ -1,44 +1,43 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 import "./styles/bulk.css";
 
 const BulkInsert = () => {
   const [subjectText, setSubjectText] = useState("");
 
   const handleSubmit = async (event) => {
-  event.preventDefault();
+    event.preventDefault();
 
+    const subjects = subjectText.split("\n").map((line) => line.trim());
 
+    const formData = {
+      issues: subjects.map((subject) => ({ subject })),
+    };
+    console.log(formData);
 
-  const subjects = subjectText.split("\n").map((line) => line.trim());
+    try {
+      const response = await axios.post(
+        "https://apiadra4.fly.dev/issues/bulkForm",
+        formData,
+        {
+          headers: {
+            Accept: "application/json",
+            Authorization: "3b77389e887d6a4689ecdcb2f009ab5d",
+          },
+        }
+      );
 
-  const formData = {
-    issues: subjects.map((subject) => ({ subject })),
-  };
-  console.log(formData);
-
-  try {
-    const response = await axios.post(
-      'https://apiadra4.fly.dev/issues/bulkForm',
-      formData,
-      {
-        headers: {
-          Accept: 'application/json',
-          Authorization: '3b77389e887d6a4689ecdcb2f009ab5d'
-        },
+      if (response.status >= 200 && response.status < 300) {
+        console.log("Issues created successfully");
+        alert("Issues creades");
+      } else {
+        console.error("Error creating issues");
+        alert("Error al crear les issues.");
       }
-    );
-
-    if (response.status >= 200 && response.status < 300) {
-      console.log('Issues created successfully');
-    } else {
-      console.error('Error creating issues');
-      alert('Error al crear les issues.');
+    } catch (error) {
+      console.error("Error:", error);
     }
-  } catch (error) {
-    console.error('Error:', error);
-  }
-};
+  };
 
   const handleSubjectChange = (event) => {
     setSubjectText(event.target.value);
@@ -80,7 +79,7 @@ const BulkInsert = () => {
               </div>
             </form>
             <div className="back-to-issues">
-              <a href="/issues" className="new-issue-submit">
+              <a href="/" className="new-issue-submit">
                 Back to issues
               </a>
             </div>
