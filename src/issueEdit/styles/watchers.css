@@ -1,0 +1,27 @@
+.watcher-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.watcher-user {
+  display: flex;
+  align-items: center;
+}
+
+.watcher-avatar {
+  width: 60px;
+  height: 70px;
+}
+
+.watcher-name {
+  margin-left: 10px; /* Adjust the margin as needed */
+}
+
+.delete-button {
+  background-color: transparent;
+  width: 20px; /* Increase the width to make the delete button bigger */
+}
+
+.delete-button:hover{
+  width:22px;
+}
