@@ -26,9 +26,11 @@ const BulkInsert = () => {
 
       if (response.ok) {
         console.log("Issues created successfully");
+        alert("Issues creades correctament");
       } else {
         console.error("Error creating issues");
         alert("Error al crear les issues.");
+        console.log(response);
       }
     } catch (error) {
       console.error("Network error", error);
@@ -75,7 +77,7 @@ const BulkInsert = () => {
               </div>
             </form>
             <div className="back-to-issues">
-              <a href="/issues" className="new-issue-submit">
+              <a href="/" className="new-issue-submit">
                 Back to issues
               </a>
             </div>

@@ -11,14 +11,6 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Link to="/new">
-          {" "}
-          <button> + New Issue </button>{" "}
-        </Link>
-        <Link to="/bulk">
-          {" "}
-          <button> Bulk </button>{" "}
-        </Link>
         <Routes>
           {" "}
           {/* Use Routes instead of Switch */}
