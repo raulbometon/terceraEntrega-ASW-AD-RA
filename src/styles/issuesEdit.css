@@ -8,6 +8,8 @@
 }
 /*MAIN*/
 .main-detail{
+    width: 100%;
+
   padding: 1rem;
 }
 .detail-title-wrapper {
