@@ -5,6 +5,8 @@ import './styles/issuesEdit.css'
 import './styles/issuesEditWrapper.css'
 import CommentsActivities from './issueEdit/CommentsActivities'
 import IssueDescription from './issueEdit/IssueDescription'
+import IssueWatchers from './issueEdit/IssueWatchers'
+
 // Custom Components
 const DueDateIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6" style={{ width: 20, height: 20 }}>
@@ -236,6 +238,7 @@ return (
               <div className="ticket-user-list">
                 {/* ---- */}
                 {/*WATCHERS ADD AND DELETE CONTROL*/}
+                <IssueWatchers issueId = {issueId}/>
               </div>
               {/* ---- */}
               <div className="ticket-users-actions">
