@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './styles/comments.css'
 import './styles/activities.css'
 import IssueActivities from './IssueActivities.js'
+import IssueComments from './IssueComments.js'
+import IssueNewComment from './IssueNewComment.js'
 
 const CommentsActivities = ({issueId}) => {
   const [showComments, setShowComments] = useState(true);
@@ -42,10 +44,10 @@ const CommentsActivities = ({issueId}) => {
 
       <div id="comments" style={{ display: showComments ? 'block' : 'none' }}>
         <div>
-          COMMENTS POST
+          <IssueNewComment issueId = {issueId}/>
         </div>
         <div>
-          COMMENTS GET
+          <IssueComments issueId = {issueId}/>
         </div>
       </div>
 

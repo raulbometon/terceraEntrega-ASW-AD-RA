@@ -29,7 +29,7 @@ const IssueActivities = ({ issueId }) => {
   if (!Array.isArray(activities)) {
     return (
       <div>
-      <span>HOLAAAAA </span>
+      <span>No activities for the moment</span>
       </div>
       ); // or you can render a loading indicator
   }
@@ -47,7 +47,6 @@ const IssueActivities = ({ issueId }) => {
           userName = 'Adria Espinoza';
           userPhoto = user2;
         }
-
 
         return (
           <article key={activity.id}>

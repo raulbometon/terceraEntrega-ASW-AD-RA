@@ -82,7 +82,7 @@ const IssueEdit = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://apiadra4.fly.dev/issues/${issueId}/activities`, {
+        const response = await axios.get(`https://apiadra4.fly.dev/issues/${issueId}`, {
           headers: {
             Accept: "application/json",
             Authorization: "3b77389e887d6a4689ecdcb2f009ab5d",
