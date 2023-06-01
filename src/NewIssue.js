@@ -72,7 +72,7 @@ const NewIssue = () => {
                 <textarea
                   name="description"
                   className="new-issue-description"
-                  style={{ width: "420px", height: "80px" }}
+                  style={{ width: "100%", height: "80px" }}
                   placeholder="Please add descriptive text to help others better understand this issue"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}

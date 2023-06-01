@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+.improve-issues{
+  display: inline-block;
+  padding: 1em;
+  margin: 2em;
+  color:white;
+  background-color:#83eede;
+}
+.improve-issues:hover{
+  background-color:#008aa8;
+}
