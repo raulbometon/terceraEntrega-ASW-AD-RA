@@ -327,7 +327,7 @@ body {
 .ticket-detail-settings {
     align-items: center;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .ticket-detail-settings [class^=btn-]:not(.select-option):not(.show-closed) {

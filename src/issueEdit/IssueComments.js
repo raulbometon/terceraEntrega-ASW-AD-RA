@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './styles/comments.css';
 import user1 from '../sources/user1.png';
-
 import user2 from '../sources/user2.png';
 
 const IssueComments = ({ issueId }) => {

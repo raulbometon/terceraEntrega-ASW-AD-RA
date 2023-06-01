@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './styles/comments.css';
 
-const IssueNewComment = ({issueId}) => {
+const IssueNewComment = ({issueId, description}) => {
   const [comment, setComment] = useState('');
 
   const handleSubmit = async (e) => {
