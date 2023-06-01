@@ -6,6 +6,7 @@ import './styles/issuesEditWrapper.css'
 import CommentsActivities from './issueEdit/CommentsActivities'
 import IssueDescription from './issueEdit/IssueDescription'
 import IssueWatchers from './issueEdit/IssueWatchers'
+import IssueNewWatcher from './issueEdit/IssueNewWatcher'
 
 // Custom Components
 const DueDateIcon = () => (
@@ -76,10 +77,6 @@ const IssueEdit = () => {
   const [issue, setIssue] = useState(null);
   const { issueId } = useParams();
 
-  {/*CONFIGURACION DESCRIPTION*/}
-  const [desc, setDesc] = useState('');
-  const [desc_active, setActivado] = useState('');
-  const [desc_send, setDescSend] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -104,22 +101,7 @@ const IssueEdit = () => {
     return <div>Cargando...</div>;
   }
 
-const handleClick = () => {
-  setActivado(true);
-};
 
-const handleChange = (event) => {
-  setDesc(event.target.value);
-};
-
-const handleSubmit = (event) => {
-  event.preventDefault();
-  // Guardar el texto enviado
-  setDescSend(desc);
-  // Reiniciar el estado del formulario
-  setDesc('');
-  setActivado(false);
-};
 
 return (
   <div class="two-sections">
@@ -241,18 +223,7 @@ return (
                 <IssueWatchers issueId = {issueId}/>
               </div>
               {/* ---- */}
-              <div className="ticket-users-actions">
-                {/* ---- */}
-                <a className="ticket-users-action" >
-                </a>
-                {/* ---- */}
-                {/* ---- */}
-                <a className="ticket-users-action">
-                  <span>Watch</span>
-                </a>
-                {/* ---- */}
-                {/* ---- */}
-              </div>
+                <IssueNewWatcher issueId = {issueId}/>
             </div>
           </div>
         </section>
