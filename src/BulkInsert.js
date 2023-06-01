@@ -1,39 +1,44 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import "./styles/bulk.css";
 
 const BulkInsert = () => {
   const [subjectText, setSubjectText] = useState("");
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+  event.preventDefault();
 
-    const subjects = subjectText.split("\n").map((line) => line.trim());
 
-    const formData = {
-      issues: subjects.map((subject) => ({ subject })),
-    };
-    console.log(formData);
 
-    try {
-      const response = await fetch("https://apiadra4.fly.dev/issues/bulkForm", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer 3b77389e887d6a4689ecdcb2f009ab5d",
-        },
-        body: JSON.stringify(formData),
-      });
+  const subjects = subjectText.split("\n").map((line) => line.trim());
 
-      if (response.ok) {
-        console.log("Issues created successfully");
-      } else {
-        console.error("Error creating issues");
-        alert("Error al crear les issues.");
-      }
-    } catch (error) {
-      console.error("Network error", error);
-    }
+  const formData = {
+    issues: subjects.map((subject) => ({ subject })),
   };
+  console.log(formData);
+
+  try {
+    const response = await axios.post(
+      'https://apiadra4.fly.dev/issues/bulkForm',
+      formData,
+      {
+        headers: {
+          Accept: 'application/json',
+          Authorization: '3b77389e887d6a4689ecdcb2f009ab5d'
+        },
+      }
+    );
+
+    if (response.status >= 200 && response.status < 300) {
+      console.log('Issues created successfully');
+    } else {
+      console.error('Error creating issues');
+      alert('Error al crear les issues.');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
 
   const handleSubjectChange = (event) => {
     setSubjectText(event.target.value);
