@@ -1,0 +1,60 @@
+.watcher-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.watcher-user {
+  display: flex;
+  align-items: center;
+}
+
+.watcher-avatar {
+  width: 60px;
+  height: 70px;
+}
+
+.watcher-name {
+  margin-left: 10px; /* Adjust the margin as needed */
+}
+
+.delete-button,
+.add-button{
+  background-color: transparent;
+  width: 25px; /* Increase the width to make the delete button bigger */
+}
+
+.delete-button:hover,
+.add-button:hover{
+  width:30px;
+}
+
+/*POST watcher*/
+.new-watcher-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-watcher {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+.add-watchers-container{
+  display: flex;
+  align-items:center;
+}
+.add-watchers-button{
+  padding: 0.6em;
+  margin: auto;
+}
+.add-watchers-button:hover{
+  padding: 0.75em;
+}

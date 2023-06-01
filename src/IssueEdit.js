@@ -4,22 +4,25 @@ import { useParams } from 'react-router-dom';
 import './styles/issuesEdit.css'
 import './styles/issuesEditWrapper.css'
 import CommentsActivities from './issueEdit/CommentsActivities'
+import IssueDescription from './issueEdit/IssueDescription'
+import IssueWatchers from './issueEdit/IssueWatchers'
+import IssueNewWatcher from './issueEdit/IssueNewWatcher'
 
 // Custom Components
 const DueDateIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6" style={{ width: 12, height: 12 }}>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6" style={{ width: 20, height: 20 }}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
   </svg>
 );
 
 const BlockedIssueIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6" style={{ width: 12, height: 12 }}>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6" style={{ width: 20, height: 20 }}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
   </svg>
 );
 
 const DeleteIssueIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6" style={{ width: 12, height: 12 }}>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6" style={{ width: 20, height: 20 }}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
   </svg>
 );
@@ -74,15 +77,11 @@ const IssueEdit = () => {
   const [issue, setIssue] = useState(null);
   const { issueId } = useParams();
 
-  {/*CONFIGURACION DESCRIPTION*/}
-  const [desc, setDesc] = useState('');
-  const [desc_active, setActivado] = useState('');
-  const [desc_send, setDescSend] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://apiadra4.fly.dev/issues/${issueId}/activities`, {
+        const response = await axios.get(`https://apiadra4.fly.dev/issues/${issueId}`, {
           headers: {
             Accept: "application/json",
             Authorization: "3b77389e887d6a4689ecdcb2f009ab5d",
@@ -102,22 +101,7 @@ const IssueEdit = () => {
     return <div>Cargando...</div>;
   }
 
-const handleClick = () => {
-  setActivado(true);
-};
 
-const handleChange = (event) => {
-  setDesc(event.target.value);
-};
-
-const handleSubmit = (event) => {
-  event.preventDefault();
-  // Guardar el texto enviado
-  setDescSend(desc);
-  // Reiniciar el estado del formulario
-  setDesc('');
-  setActivado(false);
-};
 
 return (
   <div class="two-sections">
@@ -138,27 +122,15 @@ return (
         {/*SUBHEADER*/}
         <div>Created by</div>
       </div>
-      <div>Separacion</div>
+      {/*DIVIDER*/}
+      <div style={{backgroundColor:'#f1f1f4' , paddingTop: '0.5em', marginBottom: '1em'}}></div>
+
       {/*DESCRIPTION*/}
-      <div class="description">
-      <span>Description: </span>
-        {desc_active ? (
-          <form onSubmit={handleSubmit}>
-            <input type="text" value={desc} onChange={handleChange} />
-            <button type="submit">Enviar</button>
-          </form>
-        ) : (
-          <div onClick={handleClick}>
-            {desc_send ? (
-              <div>{desc_send}</div>
-            ) : (
-              <div class="description-placeholder">Empty space is so boring... go on, be descriptive...</div>
-            )}
-          </div>
-        )}
-      </div>
-        {/*Activities + Comments*/}
-        <CommentsActivities issueId = {issueId}/>
+      <IssueDescription issueId = {issueId} description = {issue.description}/>
+
+      {/*Activities + Comments*/}
+      <CommentsActivities issueId = {issueId}/>
+
       </div>
     {/*WRAPPER*/}
     <div className="wrapper">
@@ -248,25 +220,15 @@ return (
               <div className="ticket-user-list">
                 {/* ---- */}
                 {/*WATCHERS ADD AND DELETE CONTROL*/}
+                <IssueWatchers issueId = {issueId}/>
               </div>
               {/* ---- */}
-              <div className="ticket-users-actions">
-                {/* ---- */}
-                <a className="ticket-users-action" >
-                </a>
-                {/* ---- */}
-                {/* ---- */}
-                <a className="ticket-users-action">
-                  <span>Watch</span>
-                </a>
-                {/* ---- */}
-                {/* ---- */}
-              </div>
+                <IssueNewWatcher issueId = {issueId}/>
             </div>
           </div>
         </section>
 
-        <section className="ticket-section ticket-detail-settings">
+        <section className="ticket-section ticket-detail-settings" style={{ justifyContent: 'space-between'}}>
           <tg-promote-to-us-button className="ng-pristine ng-untouched ng-valid ng-not-empty" aria-invalid="false">
             {/*ISSUE DUE DATE*/}
             {/*DUE DATE ICON*/}

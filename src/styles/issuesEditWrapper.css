@@ -276,7 +276,7 @@ section {
 }
 
 .wrapper {
-    width: 268px;
+    min-width: 268px;
     display: flex;
     height: 100%;
     min-height: calc(100vh - 48px);
@@ -327,7 +327,7 @@ body {
 .ticket-detail-settings {
     align-items: center;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .ticket-detail-settings [class^=btn-]:not(.select-option):not(.show-closed) {
